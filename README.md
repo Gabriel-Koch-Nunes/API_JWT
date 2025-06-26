@@ -77,18 +77,84 @@ cd NOME_DO_REPO
 | GET    | `/actuator/prometheus`  | Endpoint de scraping para Prometheus    | ✅ Protegido |
 
 ---
+## 🛠️ Configuração (application.yml)
+
+```yaml
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  devtools:
+    restart:
+      enabled: true
+
+jwt:
+  secret: umaChaveSecretaMuitoLongaEComplexaParaAssinarTokensJWT
+  expiration: 3600000
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+  api-docs:
+    path: /v3/api-docs
+  info:
+    title: API JWT com Spring Boot
+    description: API para autenticação e autorização com JWT
+    version: 1.0.0
+    contact:
+      name: Gabriel Koch
+      email: gabriel@email.com
+      url: https://github.com/Gabriel-Koch-Nunes
+    license:
+      name: Apache 2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0.html
+    terms-of-service: https://Gabriel.com/termos
+  external-docs:
+    description: Documentação externa da API
+    url: https://github.com/Gabriel-Koch-Nunes/jwt-api
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus
+  endpoint:
+    health:
+      show-details: always
 
 ## 🛠️ Arquitetura
 
-```
-src
-├── config                # Configuração de segurança e JWT
-├── controller            # Endpoints públicos e protegidos
-├── model                 # Entidades JPA (User)
-├── repository            # Interface JPA para acesso ao banco
-├── service               # Lógica de autenticação e JWT
-├── tests                 # Testes unitários e de integração
-```
+├── controller/
+│   └── AuthController.java
+├── service/
+│   ├── AuthService.java
+│   └── JwtService.java
+├── model/
+│   └── User.java
+├── repository/
+│   └── UserRepository.java
+├── config/
+│   └── SecurityConfig.java
+├── dto/
+│   └── RegisterRequest.java
+├── AuthIntegrationTests.java
+├── application.yml
+├── Dockerfile
+├── pom.xml
 
 ---
 
