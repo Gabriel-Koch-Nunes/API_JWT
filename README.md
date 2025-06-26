@@ -136,7 +136,7 @@ management:
     health:
       show-details: always
 
----
+```
 ## 🛠️ Arquitetura
 
 ├── controller/
@@ -157,7 +157,7 @@ management:
 ├── Dockerfile
 ├── pom.xml
 
-```yaml
+```
 
 ## 📄 Documentação Swagger
 
