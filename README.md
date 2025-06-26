@@ -136,6 +136,7 @@ management:
     health:
       show-details: always
 
+---
 ## 🛠️ Arquitetura
 
 ├── controller/
