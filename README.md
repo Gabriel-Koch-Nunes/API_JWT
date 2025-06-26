@@ -138,7 +138,7 @@ management:
 
 ```
 ## 🛠️ Arquitetura
-
+```bash
 ├── controller/
 │   └── AuthController.java
 ├── service/
@@ -160,10 +160,11 @@ management:
 ```
 
 ## 📄 Documentação Swagger
-
+```bash
 - Interface Swagger: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 - OpenAPI JSON: [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
 
+```
 ---
 
 ## 🐳 Docker
